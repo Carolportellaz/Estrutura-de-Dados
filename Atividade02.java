@@ -18,7 +18,6 @@ public class Atividade02 {
         System.out.println("Informe um número:");
         int num = teclado.nextInt();
 
-        if(num > 0){
             try{
                 int total = pot(num);
                 System.out.println("O total é: " + total);
@@ -27,19 +26,11 @@ public class Atividade02 {
             catch(Exception e){
                 System.out.println("Ocorreu o seguinte erro: " + e.getMessage());
             }
-        }
-
-        if(num == 0){
-            System.out.println("O total é: " + 1);
-        }
-
-        else{
-            System.out.println("O número informado precisa ser positivo");
-        }
 
         teclado.close();
     }
 }
+
 
 // 2 * 2 * 2 * 2
 
