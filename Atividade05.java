@@ -1,6 +1,6 @@
 import java.util.Scanner;
 public class Atividade05 {
-    public int mdc(int x, int y){
+    public int mdc(int x, int y) throws Exception{
         if((x >= y) && (x % y == 0.0)){
             return y;
         }
@@ -23,8 +23,15 @@ public class Atividade05 {
         System.out.println("Informe o 2º número: ");
         int y = teclado.nextInt();
 
-        int mdc = atividade05.mdc(x, y);
-        System.out.println("O valor será: " + mdc);
+        try{
+            int mdc = atividade05.mdc(x, y);
+            System.out.println("O valor será: " + mdc);
+        }
+
+        catch(Exception e){
+            System.out.println("Ocorreu o seguinte erro " + e);
+        }
+        
         
         teclado.close();
     
