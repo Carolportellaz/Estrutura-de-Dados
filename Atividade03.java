@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 public class Atividade03 {
-    public boolean funcPrimo(int num, int div) {
+    public boolean funcPrimo(int num, int div) throws Exception {
 
         if (div == 1) {
             return true;
@@ -25,8 +25,21 @@ public class Atividade03 {
 
         System.out.println("Informe um número: ");
         int num = teclado.nextInt();
-        boolean primo = atividade01.funcPrimo(num, num - 1);
-        System.out.println(primo);
+
+        if(num >= 0){
+            try{
+                boolean primo = atividade01.funcPrimo(num, num - 1);
+                System.out.println(primo);
+            }
+    
+            catch(Exception e){
+                System.out.println("Ocorreu o seguinte erro " + e);
+            }
+        }
+
+        else{
+            System.out.println("Digite apenas números positivos");
+        }
 
         teclado.close();
     }
