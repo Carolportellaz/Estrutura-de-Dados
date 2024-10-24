@@ -35,6 +35,20 @@ public class Atividade01b {
             System.err.println("Ocorreu o seguinte erro " + e.getMessage());
         }
 
+
+        System.out.println("Os valores são ");
+
+
+        for(int i = 0; i < nUser; i++){
+            int n1 = 0;
+            int n2 = 1;
+            System.out.println(n1);
+            n1 = n2;
+            n2 = n1 + n2;
+        }
+
+
+
         teclado.close();
 
     }
