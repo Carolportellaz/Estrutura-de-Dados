@@ -39,17 +39,21 @@ public class Atividade01b {
         System.out.println("Os valores são ");
 
 
-        for(int i = 0; i < nUser; i++){
-            int n1 = 0;
-            int n2 = 1;
-            System.out.println(n1);
-            n1 = n2;
-            n2 = n1 + n2;
+        int cont = 0;
+        int x = nUser;
+        try{
+            while(cont < x){
+                System.out.println(atividade01b.fib(cont));
+                cont++;
+            }
         }
 
-
-
+        catch(Exception e){
+            System.out.println("Ocorreu o seguinte erro " + e);
+        }
+        
         teclado.close();
 
     }
 }
+
