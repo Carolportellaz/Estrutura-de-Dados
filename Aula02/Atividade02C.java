@@ -3,9 +3,9 @@ public class Atividade02C {
     // LINEAR // 
 
     public static int [] func(int vetor[]) throws Exception{
-        int m1 = -1000;
-        int m2 = -1000;
-        int m3 = -1000;
+        int m1 = resultado[0];
+        int m2 = resultado[1];
+        int m3 = resultado[2];
 
         for(int i = 0; i < vetor.length; i++){
             int nUser = vetor[i]; 
@@ -41,7 +41,7 @@ public class Atividade02C {
     }
 
     public static void main(String[] args) {
-        int vetor [] = {10, 2000, 10, 20, 30, 500};
+        int vetor [] = {300, 20, 1000, 20, 30, 500};
 
         int resultado[];
         try {
