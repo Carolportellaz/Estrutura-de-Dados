@@ -41,7 +41,7 @@ public class Atividade02C {
     }
 
     public static void main(String[] args) {
-        int vetor [] = {300, 20, 1000, 20, 30, 500};
+        int vetor [] = {3000000, 200000000, 780000000, 20, 30, 500};
 
         int resultado[];
         try {
