@@ -1,10 +1,11 @@
-public class Atividade02 {
+public class Atividade02C {
     static int resultado [] = new int[3];
+    // LINEAR // 
 
-    public static int [] func(int vetor[]){
-        int m1 = vetor[0];
-        int m2 = vetor[1];
-        int m3 = vetor[2];
+    public static int [] func(int vetor[]) throws Exception{
+        int m1 = -1000;
+        int m2 = -1000;
+        int m3 = -1000;
 
         for(int i = 0; i < vetor.length; i++){
             int nUser = vetor[i]; 
@@ -29,8 +30,6 @@ public class Atividade02 {
                     }
                 }
             }
-
-            
         }
 
         resultado[0] = m1;
@@ -42,9 +41,16 @@ public class Atividade02 {
     }
 
     public static void main(String[] args) {
-        int vetor [] = {100, 200, 10, 20, 30, 50};
-        int resultado [] = func(vetor);
+        int vetor [] = {10, 2000, 10, 20, 30, 500};
 
-        System.out.println("Os maiores números são " + resultado[0] + ", " + resultado[1] + ", " + resultado[2]);
+        int resultado[];
+        try {
+            resultado = func(vetor);
+            System.out.println("Os maiores números são " + resultado[0] + ", " + resultado[1] + ", " + resultado[2]);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
     }
 }
