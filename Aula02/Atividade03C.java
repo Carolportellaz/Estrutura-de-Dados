@@ -3,17 +3,26 @@ public class Atividade03C {
     int cot = 0;
     public boolean func(int [] vetor, int n){
 
-        if(vetor[cot] == n){
-            System.out.println(cot);
-            return true;
+        if(vetor.length > cot){
+            if(vetor[cot] == n){
+                return true;
+            }
+
+            else{
+                System.out.println(cot);
+                cot++;
+                return func(vetor, n);
+            }
         }
 
-        else{
-            cot++;
-            System.out.println(cot);
-            return func(vetor, n);
+        return false;
 
-        }
+        // cot 0 
+        // cot 1
+        // cot 2
+        // cot 3
+        // cot 
+
         
     }
     public static void main (String args[]){
