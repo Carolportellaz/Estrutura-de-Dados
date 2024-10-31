@@ -16,13 +16,6 @@ public class Atividade03C {
         }
 
         return false;
-
-        // cot 0 
-        // cot 1
-        // cot 2
-        // cot 3
-        // cot 
-
         
     }
     public static void main (String args[]){
