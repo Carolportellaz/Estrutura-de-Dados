@@ -2,53 +2,27 @@ import java.util.Random;
 
 public class Atividade01E {
     public static int[] preencher() {
-        int vetor[] = {1, 2, 3, 4, 5, 6, 7, 8, 1, 12};
+        int vetor[] = new int[10];
         Random gerador = new Random();
 
         // ALOCA OS NÚMEROS NO VETOR //
-        //for (int i = 0; i < 10; i++) {
-        //    vetor[i] = gerador.nextInt(100);
-        //}
+        for (int i = 0; i < 10; i++) {
+            vetor[i] = gerador.nextInt(100);
+        }
 
         return vetor;
 
     }
 
-    // 1 2 3 4 5 6 7 8 9 10//
-    // 1 3 5 7 9 //
-
-    // 1
-    // 2
-    // 3
-    // 4
-    // 5
-    // 6 j == 5
-    // 7
-    // 8
-    // 9
-    // 10 9º
-
-    // posicao == i //
-
     public static int[] par(int[] vetor) throws Exception {
-        int ultima = 10;
+        int ultima = vetor.length;
         int posicao;
 
         for (int i = 0; i < ultima; i++) {
             int n = vetor[i];
-            int div = n;
-
-            while ((div != 0) && (div != 1)) {
-                try {
-                    div = div % 2;
-
-                } catch (Exception e) {
-                    System.out.println("Ocorreu o seguinte erro " + e.getMessage());
-                }
-            }
 
 
-            if (div == 0) {
+            if (n % 2 == 0) {
                 posicao = i;
                 ultima--;
 
@@ -57,14 +31,15 @@ public class Atividade01E {
 
                 // MUDANDO DE LUGAR //
                 for (int p = posicao; p < ultima; p++) {
-                    System.out.println(p);
                     vetor[p] = vetor[p + 1];
                 }
+
+                vetor[ultima] = 0;
+
+                i--;
             }
 
         }
-
-        System.out.println(ultima);
 
         return vetor;
 
