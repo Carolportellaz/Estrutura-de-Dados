@@ -4,7 +4,6 @@ public class Atividade06E {
     Random gerador = new Random();
     int escolha;
     int posicao = 0;
-    int cot = 0;
     int[] vet3;
 
 
@@ -12,7 +11,7 @@ public class Atividade06E {
         while ((posicao < vet1.length) && (posicao < vet2.length)) {
             vet3 = new int[vet1.length];
 
-            escolha = gerador.nextInt(100) + 1;
+            escolha = gerador.nextInt(100);
             System.out.println("A escolha foi " + escolha);
 
             if (escolha % 2 == 0) {
@@ -23,8 +22,9 @@ public class Atividade06E {
                 vet3[posicao] = vet2[posicao];
             }
 
+            System.out.println("O valor com a posicao é " + vet3[posicao]);
+
             posicao++;
-            cot++;
 
         }
 
