@@ -3,6 +3,8 @@ import java.util.Random;
 public class Atividade06E {
     Random gerador = new Random();
     int escolha;
+    int p1 = 0;
+    int p2 = 0;
     int posicao = 0;
     int[] vet3;
 
@@ -15,14 +17,13 @@ public class Atividade06E {
             System.out.println("A escolha foi " + escolha);
 
             if (escolha % 2 == 0) {
-                vet3[posicao] = vet1[posicao];
+                vet3[p1] = vet1[p1++];
+
             }
 
             else{
-                vet3[posicao] = vet2[posicao];
+                vet3[p2] = vet2[p2++];
             }
-
-            System.out.println("O valor com a posicao é " + vet3[posicao]);
 
             posicao++;
 
@@ -44,6 +45,7 @@ public class Atividade06E {
             for(int i = 0; i < vet3.length; i++){
                 System.out.println(vet3[i]);
             }
+
         }
 
         catch(Exception e){
