@@ -6,29 +6,54 @@ public class Atividade06E {
     int p1 = 0;
     int p2 = 0;
     int posicao = 0;
-    int[] vet3;
+    Integer[] vet3;
+    int ultima = 0;
+    int valor;
 
 
-    public int[] sorteio(int[] vet1, int[] vet2) throws Exception{
+    public Integer[] sorteio(Integer[] vet1, Integer[] vet2) throws Exception{
         while ((posicao < vet1.length) && (posicao < vet2.length)) {
-            vet3 = new int[vet1.length];
-
-            escolha = gerador.nextInt(100);
-            System.out.println("A escolha foi " + escolha);
-
-            if (escolha % 2 == 0) {
-                vet3[p1] = vet1[p1++];
-
+            // DEFINIR O TAMANHO DO VETOR // 
+            if(vet1.length > vet2.length){
+                vet3 = new Integer[vet1.length];
             }
 
             else{
-                vet3[p2] = vet2[p2++];
+                vet3 = new Integer[vet2.length];
             }
 
+            // ESCOLHE O NÚMERO //
+            escolha = gerador.nextInt(100);
+            System.out.println("A escolha foi " + escolha);
+                   
+            // VERIFICA SE É PAR OU ÍMPAR // 
+            if (escolha % 2 == 0) {        
+                valor = vet1[p1];   
+                p1++;                                        
+            }
+
+            else{
+                valor = vet2[p2];
+                p2++;
+            }
+
+            // VERIFICAÇÃO SE TIVER VAZIO //
+            if(vet3[0] == null){
+                vet3[0] = valor;
+                posicao++;
+                ultima++;
+            }
+
+            // MUDA O VETOR DE LUGAR //
+            else{
+                for(int i = posicao; i < ultima; i++){
+                    vet3[posicao] = valor;
+                }
+            } 
+            
             posicao++;
-
+            ultima++;
         }
-
         return vet3;
 
     }
@@ -36,12 +61,12 @@ public class Atividade06E {
     public static void main(String[] args) {
         Atividade06E atividade06e = new Atividade06E();
 
-        int [] vet1 = {11, 22, 33, 99};
-        int [] vet2 = {1, 7, 3, 18};
+        Integer [] vet1 = {11, 22, 33, 99};
+        Integer [] vet2 = {1, 7, 3, 18};
 
 
         try{
-            int [] vet3 = atividade06e.sorteio(vet1, vet2);
+            Integer [] vet3 = atividade06e.sorteio(vet1, vet2);
             for(int i = 0; i < vet3.length; i++){
                 System.out.println(vet3[i]);
             }
