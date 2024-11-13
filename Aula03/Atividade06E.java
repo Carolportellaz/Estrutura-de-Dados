@@ -1,3 +1,4 @@
+
 import java.util.Random;
 
 public class Atividade06E {
@@ -10,18 +11,19 @@ public class Atividade06E {
     int ultima = 0;
     int valor;
 
+    
 
     public Integer[] sorteio(Integer[] vet1, Integer[] vet2) throws Exception{
+        // DEFINIR O TAMANHO DO VETOR // 
+        if(vet1.length > vet2.length){
+            vet3 = new Integer[vet1.length];
+        }
+
+        else{
+            vet3 = new Integer[vet2.length];
+        }
+
         while ((posicao < vet1.length) && (posicao < vet2.length)) {
-            // DEFINIR O TAMANHO DO VETOR // 
-            if(vet1.length > vet2.length){
-                vet3 = new Integer[vet1.length];
-            }
-
-            else{
-                vet3 = new Integer[vet2.length];
-            }
-
             // ESCOLHE O NÚMERO //
             escolha = gerador.nextInt(100);
             System.out.println("A escolha foi " + escolha);
@@ -40,20 +42,23 @@ public class Atividade06E {
             // VERIFICAÇÃO SE TIVER VAZIO //
             if(vet3[0] == null){
                 vet3[0] = valor;
-                posicao++;
-                ultima++;
             }
 
             // MUDA O VETOR DE LUGAR //
             else{
-                for(int i = posicao; i < ultima; i++){
-                    vet3[posicao] = valor;
+                for(int i = ultima ; i > 0; i--){
+                    vet3[i] = vet3[i - 1];
+
                 }
+
+                vet3[0] = valor;
+
             } 
-            
-            posicao++;
+
             ultima++;
+            posicao++;
         }
+
         return vet3;
 
     }
