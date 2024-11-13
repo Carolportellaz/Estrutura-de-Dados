@@ -10,19 +10,27 @@ public class Atividade04E {
     Scanner teclado = new Scanner(System.in);
 
     public Integer [] pergunta() throws Exception{
-        System.out.println("\nVocê deseja: ");
-        System.out.println("1.INSERIR | 2.EXCLUIR");
+        System.out.println("Você deseja: ");
+        System.out.println("1. Adicionar um elemento");
+        System.out.println("2. Excluir um elemento");
         int escolha = teclado.nextInt();
-
-        
-
-        System.out.println("Informe a posição entre: ");
-        posicao = teclado.nextInt();
 
         if(escolha == 1){
 
             System.out.println("Informe um número: ");
             int numero = teclado.nextInt();
+
+            System.out.println("Informe a posição dentro das vagas disponíveis: ");
+            for(int i = 0; i < vetor.length; i++){
+                if(vetor[i] == null){
+                    System.out.print(" | ");
+                }
+
+                else{
+                    System.out.print(" | X");
+                }
+            }
+            posicao = teclado.nextInt();
 
             if(vetor[posicao - 1] == null){
                 vetor[posicao - 1] = numero;
@@ -31,10 +39,27 @@ public class Atividade04E {
 
             else{
                 System.out.println("Já há um número inserido nessa posição");
+                return pergunta();
             }
         }
 
         if(escolha == 2){
+            System.out.println("Informe a posição dentro das vagas ocupada: ");
+
+            for(int i = 0; i < vetor.length; i++){
+                if(vetor[i] == null){
+                    System.out.print(" | ");
+                }
+
+                else{
+                    System.out.print(" | X");
+                }
+
+            }
+
+            posicao = teclado.nextInt();
+
+
             if(vetor[posicao - 1] != null){
                 vetor[posicao - 1] = null;
                 qtd--;
@@ -42,10 +67,25 @@ public class Atividade04E {
 
             else{
                 System.out.println("Não há nenhum número nessa posição");
+                return pergunta();
             }
         }
 
         if(qtd < 10){
+            System.out.println("Os valores atualizados são : \n");
+
+            for(int i = 0; i < vetor.length; i++){
+                if(vetor[i] == null){
+                    System.out.print(" | X ");
+                }
+
+                else{
+                    System.out.print(" | " + vetor[i]);
+                }
+            }
+
+            System.out.println("");
+
             return pergunta();
         }
 
