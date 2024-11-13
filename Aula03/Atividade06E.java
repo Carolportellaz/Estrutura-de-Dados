@@ -46,12 +46,7 @@ public class Atividade06E {
 
             // MUDA O VETOR DE LUGAR //
             else{
-                for(int i = ultima ; i > 0; i--){
-                    vet3[i] = vet3[i - 1];
-
-                }
-
-                vet3[0] = valor;
+                vet3[ultima] = valor;
 
             } 
 
