@@ -1,34 +1,27 @@
 public class AtividadeE05 {
-    int cot = 0;
-    int ultima;
-    int inicio;
-    int n1;
-    int idxMenor = 0;
 
     public void crescente(Integer[] vetor) {
-        System.out.println("O novo vetor é ");
-        for (int j = 0; j < vetor.length; j++) {
-            n1 = vetor[j];
+        
+        boolean[] usados = new boolean[vetor.length];
 
-            for (int i = j + 1; i < vetor.length; i++) {
-                if (vetor[j] > vetor[i] && n1 > idxMenor) {
-                    idxMenor = i;
-                }
-
-                if ((vetor[j] < vetor[i]) || (n1 < idxMenor)) {
+        System.out.println("O vetor em ordem crescente é:");
+        for (int i = 0; i < vetor.length; i++) {
+            int idxMenor = -1;
+            for (int j = 0; j < vetor.length; j++) {
+                if (!usados[j] && (idxMenor == -1 || vetor[j] < vetor[idxMenor])) {
                     idxMenor = j;
                 }
             }
-
-            System.out.println(vetor[idxMenor]);
-
+            usados[idxMenor] = true;
+            System.out.print(vetor[idxMenor] + " ");
         }
-
+        System.out.println();
     }
 
     public static void main(String[] args) {
         AtividadeE05 atividadeE05 = new AtividadeE05();
-        Integer[] vetor = { 22, 5, 6, 11, 9 };
+        Integer[] vetor = {22, 5, 6, 11, 9};
         atividadeE05.crescente(vetor);
     }
 }
+
