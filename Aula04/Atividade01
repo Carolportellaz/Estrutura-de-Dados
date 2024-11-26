@@ -1,0 +1,22 @@
+public class Lista {
+    private Filme [] vetF;
+    private int qtd = 0;
+
+    public Lista(){
+        vetF = new Filme[10];
+
+    }
+
+    public void add(int codigo, String nome, String genero) throws Exception{ 
+        if(qtd == vetF.length){
+            throw new Exception("O vetor já está cheio");
+        }
+
+        else{
+            for(int i = 0; i < vetF.length; i++){
+                
+            }
+        }
+    }
+
+}
