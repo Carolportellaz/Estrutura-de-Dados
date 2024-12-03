@@ -1,38 +1,32 @@
 // A Lista terá os elementos e os métodos //
 public class Lista{
     private No cabeca = new No();
+    private No elemento = new No();
     private No cauda = cabeca;
-    private No elemento_entrada;
-    private No elemento_atual = cabeca.proximo;
     private int tamanho = 0;
     private int posicao = 0;
 
     public void adicionarI(Cliente c){
-        elemento_entrada = new No(c, null, null);
+        elemento = new No(c, null, null);
 
         if(tamanho == 0){
-            cabeca.proximo = elemento_entrada;
-            cauda = elemento_entrada;
+            cabeca.proximo = elemento;
+            cauda = elemento;
             tamanho++;
-
 
         }
 
         else{
-            for(int j = 0; j < tamanho; j++){
-                if(elemento_entrada.c[j]getCodigo() < c.getCodigo())
-                c.getCodigo() 
+            // CRESCENTE // 
+            while(c.getCodigo() > cabeca.proximo.elemento.getCodigo()){
+                cabeca.proximo = cabeca.proximo.proximo;
+                cabeca.anterior = cabeca.proximo;
             }
 
-            for(int i = 0; i <= posicao; i++){   
-                elemento_atual = elemento_atual.proximo;
-                elemento_entrada = elemento_atual;
-                elemento_atual = elemento_entrada;
-            }
+            elemento = cabeca.proximo;
+            cabeca.proximo.anterior = elemento;
+
         }
-
-
-
         
     }
 }
