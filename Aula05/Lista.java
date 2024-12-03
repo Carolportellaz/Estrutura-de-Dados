@@ -6,7 +6,7 @@ public class Lista{
     private int tamanho = 0;
     private int posicao = 0;
 
-    public void adicionarI(Cliente c){
+    public void adicionarI(Cliente c) throws Exception{
         elemento = new No(c, null, null);
 
         if(tamanho == 0){
@@ -28,5 +28,13 @@ public class Lista{
 
         }
         
+    }
+
+    public void imprimir(){
+        System.out.println("Os clientes são: ");
+
+        for(int i = 0; i < tamanho; i++){
+            System.out.println(cabeca.proximo.elemento.getCodigo() + " | " + cabeca.proximo.elemento.getNome() + " | " + cabeca.proximo.elemento.getTelefone());
+        }
     }
 }
