@@ -1,6 +1,5 @@
 import java.util.Scanner;
 public class App{
-    static int tamanho = 0;
     static int escolha;
     static String nome;
     static int codigo;
@@ -30,7 +29,6 @@ public class App{
 
                 try {
                     Cliente cliente = new Cliente(codigo, nome, telefone);
-
                     lista.adicionarI(cliente);
                     lista.imprimir();
                 } 
