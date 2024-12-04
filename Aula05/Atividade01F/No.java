@@ -5,8 +5,8 @@ public class No {
 
     public No (Cliente elemento, No proximo, No anterior){
         this.elemento = elemento;
-        this.proximo = null;
-        this.anterior = null;
+        this.proximo = proximo;
+        this.anterior = anterior;
     }
 
     public No(){
