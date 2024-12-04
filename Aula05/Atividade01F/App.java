@@ -1,17 +1,18 @@
 import java.util.Scanner;
 public class App{
+    static int tamanho = 0;
+    static int escolha;
+    static String nome;
+    static int codigo;
+    static String telefone;
+    static Scanner teclado = new Scanner (System.in);
+    static Lista lista = new Lista();
+
     public static void main(String[] args) {
         mensagem();
     }
 
     public static int mensagem (){
-        int escolha;
-        String nome;
-        int codigo;
-        String telefone;
-
-        Scanner teclado = new Scanner (System.in);
-        Lista lista = new Lista();
 
         System.out.println("Qual operação você deseja fazer? 1.Inserir | 2.Exibir em ordem crescente | 3.Exibir em ordem decrescente");
         escolha = teclado.nextInt();
@@ -48,7 +49,6 @@ public class App{
         System.out.println("Você deseja realizar uma nova ação? 1.Sim 2.Não");
         escolha = teclado.nextInt();
 
-        teclado.close();
 
         if(escolha == 1){
             return mensagem();
