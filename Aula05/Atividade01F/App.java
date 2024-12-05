@@ -24,12 +24,17 @@ public class App{
                 System.out.println("Informe o código: ");
                 codigo = teclado.nextInt();
 
+                if(codigo <= 0){
+                    System.out.println("Informe apenas números positivos");
+                    return mensagem();
+                }
+
                 System.out.println("Informe seu telefone: ");
                 telefone = teclado.next();
 
                 try {
                     Cliente cliente = new Cliente(codigo, nome, telefone);
-                    lista.adicionarI(cliente);
+                    lista.add(cliente);
                     lista.imprimir();
                 } 
                 
@@ -39,6 +44,13 @@ public class App{
                 
 
                 break;
+            
+            case 2:
+                lista.imprimir();
+                break;
+            
+            case 3:
+                lista.imprimirD();
         
             default:
                 break;
