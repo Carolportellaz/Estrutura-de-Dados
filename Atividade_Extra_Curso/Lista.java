@@ -14,7 +14,7 @@ public class Lista {
     int posicao = 0;
 
 
-    public void add(int chave, double nota, int [] opcao){
+    public void add(int chave, double nota, int [] opcao) throws Exception{
         vet_escolha = new int[20];
         // Cria o elemento //
         Candidato candidato = new Candidato(chave, nota, opcao);
@@ -24,25 +24,48 @@ public class Lista {
     
         // Primeiro verifica se a lista está vazia //
         if(cabeca.proximo == null){
-            ap_rep = verifica_curso(opcoes);
-
-            if(ap_rep == true){
-                cabeca.proximo = novo_elemento;
-                novo_elemento.anterior = cabeca;
-                cauda = novo_elemento;
-                tamanho++;
-            }
+            cabeca.proximo = novo_elemento;
+            novo_elemento.anterior = cabeca;
+            cauda = novo_elemento;
+            tamanho++;
         }
 
         else{
+            // Ordena todo mundo por nota primeiro //
             No quebra_galho = cabeca.proximo;
-            ap_rep = verifica_curso(opcoes);
-            int iteracao = 0;
+            //ap_rep = verifica_curso(opcoes);
 
-            while((quebra_galho.proximo != null) || (novo_elemento.elemento.getNota() > quebra_galho.elemento.getNota())){
+            while((quebra_galho.proximo != null) || (novo_elemento.elemento.getNota() >= quebra_galho.elemento.getNota())){
+                if(novo_elemento.elemento.getNota() == quebra_galho.elemento.getNota()){
+                    addMeio(quebra_galho.proximo, novo_elemento);
+                }
+
+                System.out.println("O quebra galho é " + quebra_galho);
                 quebra_galho = quebra_galho.proximo;
             }
+
+            No elemento_atual = quebra_galho;
+
+            // Insere no início //
+            if(elemento_atual.anterior == cabeca){
+
+            }
+
+            // Insere no final //
+            if(elemento_atual == cauda){
+
+            }
+
+            // Insere no meio //
+            else{
+                addMeio(elemento_atual, novo_elemento);
+            }
         }
+    }
+
+    public void addMeio(No elemento_atual, No novo_elemento){
+        No quebra_galho = elemento_atual;
+
     }
 
     public boolean verifica_curso(int [] opcoes){
