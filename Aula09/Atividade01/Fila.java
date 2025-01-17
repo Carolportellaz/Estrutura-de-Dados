@@ -22,6 +22,7 @@ public class Fila{
             tamanho++;
 
             System.out.println(vet_pessoa[inicio]);
+            System.out.println("T1 " + tamanho);
         }  
     }
 
@@ -42,6 +43,8 @@ public class Fila{
         else{
             inicio--;
         }
+        
+        tamanho--;
 
         return p;
     }
