@@ -24,8 +24,20 @@ public class Fila {
                 tamanho++;
                 senha++;
             }
+        }
+    }
+
+    public int chamado() throws Exception{
+        if(tamanho == 0){
+            throw new Exception("Lista vazia");
+        }
+
+        else{
+            int cliente = vet_senhas[fim];
+            fim++;
             
         }
+
     }
 
     public int [] imprimir(){
