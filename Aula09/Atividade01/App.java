@@ -1,14 +1,15 @@
+
 import java.util.Scanner;
 
 public class App {
     static Scanner teclado = new Scanner(System.in);
     public static void main(String[] args) {
         int escolha = 1;
+        Fila fila = new Fila();
         
 
         while (escolha != 0) {
             Pessoa [] vet;
-            Fila fila = new Fila();
             System.out.println("Informe a operação 1.Inserir | 2.Remover | 3.Furar fila");
             escolha = teclado.nextInt();
             
