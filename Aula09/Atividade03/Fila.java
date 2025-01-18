@@ -1,13 +1,13 @@
 public class Fila {
     int senha = 1;
     int tamanho = 0;
-    int [] vet_senhas = new int[50];
+    Integer [] vet_senhas = new     Integer[50];
     int inicio = 0;
     int fim = 0;
     int nova_senha;
 
     public void enfilera() throws Exception{
-        if(senha > 50){
+        if(senha > 10){
             throw new Exception("Fila cheia");
         }
 
@@ -28,19 +28,18 @@ public class Fila {
     }
 
     public int chamado() throws Exception{
-        if(tamanho == 0){
+        if(vet_senhas[fim] == null){
             throw new Exception("Lista vazia");
         }
 
         else{
-            int cliente = vet_senhas[fim];
+            int c_chamado = vet_senhas[fim];
             fim++;
-            
+            return c_chamado;
         }
-
     }
 
-    public int [] imprimir(){
+    public Integer [] imprimir(){
         return vet_senhas;
     }
 }
