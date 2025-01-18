@@ -4,7 +4,7 @@ public class App{
         Scanner teclado = new Scanner(System.in);
         int escolha = 0;
         Fila fila = new Fila();
-        int [] vet_r;
+        Integer [] vet_r;
         
         while(escolha != 3){
             System.out.println("Qual operação você deseja fazer: 1.Solicitar senha | 2.Chamar para atendimento | 3.Sair");
@@ -16,13 +16,9 @@ public class App{
                         fila.enfilera();
                         vet_r = fila.imprimir();
 
-                        for(int i = 0; i < fila.tamanho; i++){
+                        for(int i = fila.inicio; i >= fila.fim; i--){
                             System.out.println(vet_r[i]);
                         }
-
-                        System.out.println("O ínicio é " + fila.vet_senhas[fila.inicio]);
-                        System.out.println("O fim é " + fila.vet_senhas[fila.fim]);
-
                     } 
                     
                     catch (Exception e) {
@@ -30,12 +26,27 @@ public class App{
                     }    
 
                     break;
+                
+                case 2:
+                    try{
+                        System.out.println("Senha chamada " + fila.chamado());
+                        vet_r = fila.imprimir();
+
+                        for(int i = fila.inicio; i >= fila.fim; i--){
+                            System.out.println(vet_r[i]);
+                        }
+                    }
+
+                    catch(Exception e){
+                        System.out.println("Ocorreu o seguinte erro " + e.getMessage());
+                    }
             
                 default:
                     break;
             }
         }
 
+        teclado.close();
         
     }
 }
