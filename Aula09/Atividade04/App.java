@@ -1,85 +1,72 @@
-import java.util.Scanner;
-
-public class App {
-    public static void main (String args[]){
-        String titulo;
-        Fila fila = new Fila();
-        Scanner teclado = new Scanner(System.in);
-        int escolha = 1;
-        Processo [] resultado = new Processo[10];
-        try{
-            while (escolha != 0) {
-                System.out.println("Qual operação você deseja fazer: 1.Incluir | 2.Retirar | 3.Imprimir | 4.Localizar | 5.Excluir ");
-                escolha = teclado.nextInt();
-    
-                switch (escolha) {
-                    case 1:
-                        System.out.println("Informe o título: ");
-                        titulo = teclado.next();
-                        try{
-                            fila.inserir(titulo);
-                        }
-    
-                        catch(Exception e){
-                            System.out.println("Ocorreu o seguinte erro " + e.getMessage());
-                        }
-                        break;
-                    
-                    case 2:
-                        try{
-                            System.out.println("O processo " + fila.retirar().getId() + " foi retirado");
-                        }
-    
-                        catch(Exception e){
-                            System.out.println("Ocorreu o seguinte erro " + e.getMessage());
-                        }
-    
-                        break;
-                    
-                    case 3:
-                        try{
-                            resultado = fila.imprimir();
-                            for(int i = fila.inicio; i > fila.fim; i--){
-                                System.out.println(resultado[i - 1].getId() + " | " + resultado[i - 1].getTitulo());
-                            }
-                        }
-
-                        catch(Exception e){
-                            System.out.println("Ocorreu o seguinte erro " + e.getMessage());
-                        }
-                        
-                        break;
-                
-                    case 4:
-                        System.out.println("Informe o identificador");
-                        int id = teclado.nextInt();
-                        Integer idx_p = fila.buscar(id);
-                        if(idx_p == null){
-                            System.out.println("Processo não encontrado");
-                        }
-
-                        else{
-                            System.out.println("O processo foi encontrado: " + fila.vet_p[idx_p].getId() + " | " + fila.vet_p[idx_p].getTitulo());
-                        }
-
-                        break;
-                    
-                    case 5:
-                        fila.excluir_todos();
-                        System.out.println("Arquivos excluídos com sucesso");
-                        break;
-                        
-                    default:
-                        break;
-                }
+public class Fila {
+    int id;
+    int tamanho;
+    int inicio;
+    int fim;
+    Processo [] vet_p = new Processo[1000];
+    public Processo inserir(String titulo) throws Exception{
+        if(tamanho < 5){
+            id++;
+            Processo novo_p = new Processo(id, titulo);
+            if(inicio == 0){
+                vet_p[inicio] = novo_p;
+                tamanho++;
+                inicio++;
             }
-            teclado.close();
-        
+
+            else{
+                vet_p[inicio] = novo_p;
+                tamanho++;
+                inicio++;
+            }
+
+            return novo_p;
         }
 
-        catch(Exception e){
-            System.out.println("Ocorreu o seguinte erro " + e.getMessage());
+        else{
+            throw new Exception("Lista cheia");
         }
     }
 
+    public Processo retirar() throws Exception{
+        if(tamanho == 0){
+            throw new Exception("Lista Vazia");
+        }
+        Processo saida = vet_p[fim];
+        vet_p[fim] = null;
+        fim++;
+        tamanho--;
+        return saida;
+    }
+
+    public Processo [] imprimir(){
+        return vet_p;
+    }
+
+    public Integer buscar(int id){
+        // O início aponta para uma posição vazia //
+        int quebra_galho = inicio - 1;
+        Integer correto = null;
+        while(quebra_galho >= fim){
+            if(vet_p[quebra_galho].getId() == id){
+                correto = quebra_galho;
+                break;
+            }
+
+            else{
+                quebra_galho--;
+            }
+            
+        }
+
+        return correto;
+    }
+
+    public void excluir_todos(){
+        vet_p[0] = null;
+        inicio = 0;
+        fim = 0;
+        tamanho = 0;
+        System.out.println("O valor do id é " + id);
+    }
 }
