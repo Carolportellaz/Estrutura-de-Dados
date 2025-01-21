@@ -7,7 +7,7 @@ public class Fila {
     int nova_senha;
 
     public void enfilera() throws Exception{
-        if(senha > 10){
+        if(senha >= 50){
             throw new Exception("Fila cheia");
         }
 
