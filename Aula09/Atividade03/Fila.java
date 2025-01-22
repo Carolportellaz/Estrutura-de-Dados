@@ -7,7 +7,7 @@ public class Fila {
     int nova_senha;
 
     public void enfilera() throws Exception{
-        if(senha >= 50){
+        if(senha > 50){
             throw new Exception("Fila cheia");
         }
 
@@ -28,6 +28,10 @@ public class Fila {
     }
 
     public int chamado() throws Exception{
+        if(fim > vet_senhas.length - 1){
+            throw new Exception("Lista vazia");
+        }
+
         if(vet_senhas[fim] == null){
             throw new Exception("Lista vazia");
         }
