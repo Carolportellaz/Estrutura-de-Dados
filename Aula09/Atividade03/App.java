@@ -43,6 +43,10 @@ public class App {
                         catch (Exception e) {
                             System.out.println("Ocorreu o seguinte erro " + e.getMessage());
                         }
+                        
+                        break;
+                    case 3:
+                        System.exit(0);
 
                     default:
                         break;
