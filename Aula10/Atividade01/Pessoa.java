@@ -6,6 +6,7 @@ public class Pessoa extends FilaBase {
     public Pessoa(String nome, String fila) {
         this.nome = nome;
         this.fila = fila;
+        this.proximo = null;
     }
     
     public String getNome() {
