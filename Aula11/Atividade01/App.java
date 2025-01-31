@@ -13,6 +13,7 @@ public class App{
             System.out.println("Informe a operacao: 1.Adicionar início | 2. Adicionar fim | 3.Remover início | 4.Remover fim");
             escolha = teclado.nextInt();
 
+
             switch (escolha) {
                 case 1:
                     deque.addI(nome);
@@ -22,9 +23,16 @@ public class App{
                     break;
             }
         }
-        /*for(deque.isEmpty()){
-            System.out.println(deque.);
-        }*/
+
+        while(deque.isEmpty() == false){
+            try{
+                System.out.println(deque.removeI());
+            }
+
+            catch(Exception e){
+                System.out.println("Ocorreu o seguinte erro " + e.getMessage());
+            }
+        }
 
         teclado.close();
         
