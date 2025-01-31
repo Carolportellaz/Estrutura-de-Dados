@@ -19,11 +19,34 @@ public class Deque <T> {
             cabeca.setAnterior(quebra_galho);
         }
 
-        System.out.println("Adicionado no fim");
+        tamanho++;
+
+        System.out.println("Adicionado no incio");
+    }
+
+    public T removeI() throws Exception{
+        if(isEmpty() == true){
+            throw new Exception("Lista início");
+        }
+
+        NoDeque<T> temporaria = cabeca.getProximo();
+
+        cabeca.setProximo(cabeca.getProximo().getProximo());
+        System.out.println("Remover no incio");
+        tamanho--;
+
+
+        return temporaria.getInfo();
     }
 
     public boolean isEmpty(){
-        return tamanho != 0;
+        if(tamanho == 0){
+            return true;
+        }
+
+        else{
+            return false;
+        }
     }
     
 }
