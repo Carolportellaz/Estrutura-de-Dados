@@ -95,14 +95,16 @@ public class Deque <T> {
             cabeca.setProximo(null);
         }
 
-        cabeca.setAnterior(cabeca.getAnterior().getAnterior());
-        
+        else{
+            cabeca.setAnterior(removido.getAnterior());
+
+            if(cabeca.getAnterior() != null){
+                cabeca.getAnterior().setProximo(null);
+            }
+        }
 
         tamanho--;
-
-
-
+        
         return removido.getInfo();
     }
-    
 }
