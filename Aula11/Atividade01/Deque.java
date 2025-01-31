@@ -87,18 +87,20 @@ public class Deque <T> {
         if(tamanho == 0){
             throw new Exception("Lista vazia");
         }
+
         NoDeque<T> removido = cabeca.getAnterior();
 
         if(tamanho == 1){
-            cabeca.setProximo(null);
             cabeca.setAnterior(null);
+            cabeca.setProximo(null);
         }
 
-        else{
-            cabeca.setAnterior(cabeca.getAnterior().getAnterior());
-        }
+        cabeca.setAnterior(cabeca.getAnterior().getAnterior());
+        
 
         tamanho--;
+
+
 
         return removido.getInfo();
     }
