@@ -15,10 +15,8 @@ public class Deque <T>{
 
         while(tempo != 0){
             juros = valor_parcela*(0.01)*mes;
+            juros = juros + valor_parcela;
 
-            System.out.println("O valor da parcela é " + valor_parcela);
-            System.out.println("O valor do mes é " + mes);
-            System.out.println("O valor do juros é " + juros);
             addF(valor_parcela, juros);
             mes++;
             tempo--;
@@ -59,6 +57,7 @@ public class Deque <T>{
 
         else{
             cabeca.setProximo(cabeca.getProximo().getProximo());
+            cabeca.getProximo().setAnterior(cabeca);
             tamanho--;
         }
 
@@ -75,6 +74,8 @@ public class Deque <T>{
             cauda = cauda.getAnterior();
             tamanho--;
         }
+
+        //System.out.println("O valor a ser removido é " removido.getInfo().get);
 
         return removido.getInfo();
     }
