@@ -37,7 +37,4 @@ public class NodeDeque<T> {
         this.info = valor_juros;
     }
 
-    
-
-
 }
