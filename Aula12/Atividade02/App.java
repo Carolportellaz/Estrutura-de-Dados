@@ -60,6 +60,25 @@ public class App{
 
                     break;
                 
+                case 3:
+                    try{
+                        hash.status();
+
+                        ArrayList<Time> [] tabela = hash.imprimir();
+
+                        for(int i = 0; i < tabela.length; i++){
+                            if(tabela[i] != null){
+                                System.out.println(tabela[i].get(i).getCodigo() + " | " + tabela[i].get(i).getNome());
+                            }
+                        }
+
+                    }
+                
+                    catch(Exception e){
+                        System.out.println("Ocorreu o seguinte erro " + e.getMessage());
+                    }
+
+                    break;
                 default:
                     System.out.println("Informe uma opção válida");
             }
