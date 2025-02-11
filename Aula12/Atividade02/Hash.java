@@ -53,9 +53,19 @@ public class Hash {
         return tabela;
     }
 
-    /* public void imp(){
-        for(int i = 0; i < tabela.length; i++){
-            Sys
-        }
-    }*/
+
+    public void status(){
+            for(int i = 0; i < 10; i++){
+                if(tabela[i] != null){
+                    ArrayList<Time> liv = tabela[i];
+    
+                    System.out.println("A posição " + i + " possui " + liv.size());
+                }
+    
+                else{
+                    System.out.println("A posição " + i + " não possui livros cadastrados");
+                }
+            }
+        
+    }
 }
