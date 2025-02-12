@@ -18,14 +18,13 @@ public class App {
         ht.putAberto(new Livro("578-0-7234-2609-4","O grito","Lobão",1200));
         ht.putAberto(new Livro("678-0-7234-2609-4","O silêncio","Lobão",1200));
         ht.putAberto(new Livro("878-0-7234-2609-4","O crime","Lobão",1200));
-        ht.putAberto(new Livro("929-0-7234-2609-4","A vingança","Lobão",1200));
         ht.putAberto(new Livro("998-0-7234-2609-4","A vingança II","Lobão",1200));
 
 
         // Removendo
         try{
             System.out.println("Removendo");
-            removido = ht.remove("978-0-7234-2609-4");
+            removido = ht.remove("378-0-7334-2609-4");
             System.out.println("O livro " + removido.getTitulo() + " foi removido");
 
             removido = ht.remove("678-0-7234-2609-4");
