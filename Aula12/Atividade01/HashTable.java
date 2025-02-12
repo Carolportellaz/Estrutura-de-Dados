@@ -80,6 +80,26 @@ public class HashTable {
             tamanho--;
             return livro;
         }
+
+        else{
+            // Dando o salto e procurando
+            int salto = 0;
+            for(salto = 0; salto < tabela.length; salto++){
+                if(tabela[salto].getISBN().equals(chave)){
+                    contem = true;
+                    break;
+                }
+            }
+
+            if(contem == true){
+                livro = tabela[salto];
+                tabela[salto] = null;
+                tamanho--;
+                return livro;
+            }
+
+        }
+
         return null;
     }
 
