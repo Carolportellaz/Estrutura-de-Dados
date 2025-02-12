@@ -44,7 +44,6 @@ public class HashTable {
         for(salto = 0; salto < tabela.length; salto++){
             hash = (hash(l.getISBN()) + salto) % tabela.length;
 
-            System.out.println("O valor de hash é " + hash);
 
             // Se está livre o s já foi cadastrado 
             if((tabela[hash] == null) || tabela[hash].getISBN().equals(l.getISBN())){
@@ -59,46 +58,32 @@ public class HashTable {
         }
     }
 
-    // Contém erro//
     public Livro remove(String chave){
         int hash = hash(chave);
-        boolean contem = false;
-        Livro livro = new Livro(); 
 
-        for(int i = 0; i < tabela.length; i++){
-            livro = tabela[hash];
-
-            if(livro.getISBN().equals(chave)){
-                contem = true;
-                break;
-            }
-        }
-
-        if(contem == true){
+        // Vê se tá na posição certa sem salto
+        if(tabela[hash] != null && tabela[hash].getISBN().equals(chave)){
+            Livro livro = tabela[hash];
             tabela[hash] = null;
             return livro;
         }
 
         else{
-            // Dando o salto e procurando
-            int salto = 0;
-            for(salto = 0; salto < tabela.length; salto++){
-                if(tabela[salto].getISBN().equals(chave)){
-                    contem = true;
-                    break;
+            // Se teve salto //
+            for(int i = 0; i < tabela.length; i++){
+                if(tabela[i] != null && tabela[i].getISBN().equals(chave)){
+                    Livro livro = tabela[i];
+                    tabela[i] = null;
+                    return livro;
                 }
             }
 
-            if(contem == true){
-                livro = tabela[salto];
-                tabela[salto] = null;
-                return livro;
-            }
+            return null;
+
+
         }
 
-        return null;
     }
-
 
     public Livro [] imprimir(){
         return tabela;
