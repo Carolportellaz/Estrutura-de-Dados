@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.concurrent.ExecutionException;
 
 @SuppressWarnings("unchecked")
 public class Hash {
@@ -54,18 +55,7 @@ public class Hash {
     }
 
 
-    public void status(){
-            for(int i = 0; i < 10; i++){
-                if(tabela[i] != null){
-                    ArrayList<Time> liv = tabela[i];
-    
-                    System.out.println("A posição " + i + " possui " + liv.size());
-                }
-    
-                else{
-                    System.out.println("A posição " + i + " não possui livros cadastrados");
-                }
-            }
-        
+    public ArrayList<Time> [] status(){
+        return tabela;
     }
 }
