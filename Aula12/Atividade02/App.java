@@ -7,24 +7,37 @@ public class App{
         Scanner teclado = new Scanner(System.in);
         int escolha = 1; 
         String nome;
-        String codigo;
+        String codigo = "";
         String ano;
         String tecnico;
         String presidente;
         Hash hash = new Hash();
-        ArrayList<Time> array [];
+        boolean correto;
+        int verifica_codigo;
 
-        array = new ArrayList[10];
         
         while(escolha != 3){
             System.out.println("Informe a operação que deseja realizar: 1.Cadastrar | 2.Concultar | 3.Sair");
             escolha = teclado.nextInt();
 
+            correto = false;
 
             switch(escolha){
                 case 1: 
-                    System.out.println("Informe o codigo");
-                    codigo = teclado.next(); 
+                    while (correto == false) {
+                        System.out.println("Informe o codigo");
+                        codigo = teclado.next(); 
+                        
+                        try{
+                            verifica_codigo = Integer.parseInt(codigo);
+                            correto = true;
+                        }
+
+                        catch(Exception e){
+                            System.out.println("Informe um valor válido");
+                            correto = false;
+                        }
+                    }
 
                     System.out.println("Informe o nome");
                     nome = teclado.next();
@@ -43,32 +56,21 @@ public class App{
 
                     break;
                  
-
-                case 2: 
-                try{
-                    array = hash.imprimir();
-
-                    for(int i = 0; i < hash.tamanho; i++){
-                        System.out.println(array[i].get(i).getCodigo() + " | " + array[i].get(i).getNome());
-                    }
-                }
-
-                catch(Exception e){
-                    System.out.println("Ocorreu o seguinte erro " + e.getMessage());
-                }
-                    
-
-                    break;
                 
-                case 3:
+                case 2:
                     try{
                         hash.status();
 
                         ArrayList<Time> [] tabela = hash.imprimir();
 
-                        for(int i = 0; i < tabela.length; i++){
+                        for(int i = 0; i < 10; i++){
                             if(tabela[i] != null){
-                                System.out.println(tabela[i].get(i).getCodigo() + " | " + tabela[i].get(i).getNome());
+                                for(int j = 0; j < tabela[i].size(); j++){
+                                    if(tabela[i].get(j).getCodigo() != null){
+                                        System.out.println(tabela[i].get(j).getCodigo() + " | " + tabela[i].get(j).getNome());
+                                    }
+                                    
+                                }
                             }
                         }
 
@@ -79,11 +81,16 @@ public class App{
                     }
 
                     break;
+                case 3:
+                    System.exit(0);
+
                 default:
                     System.out.println("Informe uma opção válida");
             }
 
         }
+
+        teclado.close();
 
     }
 }
