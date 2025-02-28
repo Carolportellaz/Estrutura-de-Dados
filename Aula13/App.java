@@ -1,10 +1,5 @@
-import java.util.Scanner;
-
 public class App{
     public static void main(String[] args) {
-        int mat;
-        String nome;
-        String curso;
         Arvore arv = new Arvore();
         
         System.out.println("Adicionando os elementos");
@@ -46,5 +41,24 @@ public class App{
 
         System.out.println("Imprimindo em pós-ordem");
         arv.posOrdem(arv.raiz);
+
+        try{
+            Node no_removido = arv.remover(17);
+            
+            System.out.println("Removendo valor");
+            System.out.println("A escolha foi " + arv.escolha);
+            System.out.println("O valor " + no_removido.p.getMat() + " | " + no_removido.p.getNome() + " | " + no_removido.p.getCurso());
+            
+
+            no_removido = arv.remover(19);
+            
+            
+            System.out.println("O valor " + no_removido.p.getMat() +  " | " + no_removido.p.getNome() + no_removido.p.getCurso());
+            
+        }
+
+        catch(Exception e){
+            System.out.println("Ocorreu o seguinte erro " + e.getMessage());
+        }
     }
 }
