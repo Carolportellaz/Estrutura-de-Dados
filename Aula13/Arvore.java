@@ -1,15 +1,16 @@
+import java.util.Random;
+
 public class Arvore {
     Node raiz = null;
 
     public void inserir(Node no, Pessoa p){
-
         if(no == null){
             raiz = new Node(p);
         }
 
         else{
             int valor = p.getMat();
-            if(valor < no.p.getMat()){
+            if(valor > no.p.getMat()){
                 if(no.direita != null){
                     inserir(no.direita, p);
                 }
@@ -28,6 +29,89 @@ public class Arvore {
                     no.esquerda = new Node(p);
                 }
             }
+        }
+    }
+
+    public Node remover(int mat) throws Exception{
+        return remover(this.raiz, mat);
+    }
+
+    public Node remover(Node no, int mat) throws Exception{
+        Node no_removido = no;
+        if(no == null){
+            throw new Exception("Componente não encontrado");
+        }
+
+        if(raiz == null){
+            throw new Exception("Lista vazia");
+        }
+
+        else{
+            if(mat > no.p.getMat()){
+                return remover(no.direita, mat);
+            }
+
+            if(mat < no.p.getMat()){
+                return remover(no.esquerda, mat);
+            }
+
+            // Aqui eu encontrei o no //
+            else{
+                // Se tiver dois filhos
+
+                Random radom = new Random();
+                int escolha = radom.nextInt(2);
+
+                if(no.esquerda != null && no.direita != null){
+
+                    // Pega o menor do lado direito//
+                    if(escolha == 0){
+                        no_removido = minimo(no.direita);
+                        no
+                    }
+
+                    else{
+                        no_removido = maximo(no.esquerda);
+                    }
+
+                }
+
+                else{
+                    // Se tiver filho na esquerda
+                    if(no.esquerda != null){
+                        no = no.esquerda;
+                    }
+
+                    // Se tiver filho na direita
+                    else{
+                        no = no.direita;
+                    }
+                }
+                
+
+            }
+        }
+
+        return no_removido;
+    }
+
+    public Node minimo(Node no) {
+        if(no.esquerda != null){
+            return minimo(no.esquerda);
+        }
+        
+        else{
+            return no;
+        }
+    }
+
+    public Node maximo(Node no) {
+        if(no.direita != null){
+            return minimo(no.direita);
+        }
+
+        else{
+            return no;
         }
     }
 
