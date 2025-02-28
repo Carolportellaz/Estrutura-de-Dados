@@ -2,6 +2,7 @@ import java.util.Random;
 
 public class Arvore {
     Node raiz = null;
+    int escolha;
 
     public void inserir(Node no, Pessoa p){
         if(no == null){
@@ -58,22 +59,27 @@ public class Arvore {
             // Aqui eu encontrei o no //
             else{
                 // Se tiver dois filhos
-
                 Random radom = new Random();
-                int escolha = radom.nextInt(2);
+                escolha = radom.nextInt(2);
 
                 if(no.esquerda != null && no.direita != null){
 
                     // Pega o menor do lado direito//
                     if(escolha == 0){
-                        no_removido = minimo(no.direita);
-                        no
+                        no.p = minimo(no.direita).p;
+                        
+                        // Remove o menor //
+                        no.direita = removerMin(no);
+                        
                     }
 
+                    // Pega o maior do lado esquerdo//
                     else{
-                        no_removido = maximo(no.esquerda);
-                    }
+                        no.p = maximo(no.esquerda).p;
 
+                        // Remove o maior //
+                        no.esquerda = removerMax(no);
+                    }
                 }
 
                 else{
@@ -87,8 +93,6 @@ public class Arvore {
                         no = no.direita;
                     }
                 }
-                
-
             }
         }
 
@@ -105,6 +109,23 @@ public class Arvore {
         }
     }
 
+    public Node removerMin(Node no) throws Exception{
+        if(no == null){
+            throw new Exception("Árvore vazia");
+        }
+
+        else{
+            if(no.esquerda != null){
+                no.esquerda = (removerMin(no.esquerda));
+                return no;
+            }
+
+            else{
+                return no.direita;
+            }
+        }
+    }
+
     public Node maximo(Node no) {
         if(no.direita != null){
             return minimo(no.direita);
@@ -112,6 +133,23 @@ public class Arvore {
 
         else{
             return no;
+        }
+    }
+
+    public Node removerMax(Node no) throws Exception{
+        if(no == null){
+            throw new Exception("Árvore vazia");
+        }
+
+        else{
+            if(no.direita != null){
+                no.direita = removerMax(no.direita);
+                return no;                
+            }
+
+            else{
+                return no;
+            }
         }
     }
 
