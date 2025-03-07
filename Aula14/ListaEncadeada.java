@@ -4,10 +4,10 @@ public class ListaEncadeada {
     private No elemento;
 
     public int tamanho = 0;
-    
-    public void addInicio(Pessoa p){
+
+    public void addInicio(Pessoa p) {
         elemento = new No(p, null);
-        if (tamanho == 0){
+        if (tamanho == 0) {
             cabeca.proximo = elemento;
             cauda = elemento;
         } else {
@@ -16,39 +16,41 @@ public class ListaEncadeada {
         }
         tamanho++;
     }
-    public void addFim(Pessoa p){
-        if (tamanho==0)
+
+    public void addFim(Pessoa p) {
+        if (tamanho == 0)
             addInicio(p);
-        else{
-            elemento = new No(p,null);
+        else {
+            elemento = new No(p, null);
             cauda.proximo = elemento;
             cauda = elemento;
             tamanho++;
         }
-        
+
     }
 
-    public void add(int posicao, Pessoa p){
-        if (posicao>=tamanho)
+    public void add(int posicao, Pessoa p) {
+        if (posicao >= tamanho)
             addFim(p);
-        else if (posicao==0)
+        else if (posicao == 0)
             addInicio(p);
         else {
             elemento = new No(p, null);
             // Pegamos o elemento que vem antes da posição que iremos inserir
-            // O proximo do elemento que iremos inserir passa a ser o proximo de seu predecessor
+            // O proximo do elemento que iremos inserir passa a ser o proximo de seu
+            // predecessor
             // O proximo do predecessor passa a ser o elemento
             No el = cabeca.proximo;
-            for (int i=1;i<posicao;++i) // comeca em 1 pois o el já está no primeiro elemento (0)
+            for (int i = 1; i < posicao; ++i) // comeca em 1 pois o el já está no primeiro elemento (0)
                 el = el.proximo;
 
             elemento.proximo = el.proximo;
-            el.proximo = elemento;  
+            el.proximo = elemento;
             tamanho++;
         }
     }
 
-    public void removeInicio() throws Exception{
+    public void removeInicio() throws Exception {
         if (tamanho == 0)
             throw new Exception("Lista vazia");
         cabeca.proximo = cabeca.proximo.proximo;
@@ -56,17 +58,18 @@ public class ListaEncadeada {
         if (tamanho == 0)
             cauda = null;
     }
-    public void removeFim() throws Exception{
+
+    public void removeFim() throws Exception {
         if (tamanho == 0)
             throw new Exception("Lista vazia");
         if (tamanho == 1)
             removeInicio();
         else {
             No el = cabeca.proximo;
-            do{
+            do {
                 elemento = el;
                 el = el.proximo;
-            } while (el.proximo!=null);
+            } while (el.proximo != null);
 
             elemento.proximo = null;
             cauda = elemento;
@@ -74,64 +77,73 @@ public class ListaEncadeada {
         }
     }
 
-    public void remove(int posicao) throws Exception{
-        if(tamanho==0)
+    public void remove(int posicao) throws Exception {
+        if (tamanho == 0)
             throw new Exception("Lista vazia.");
-        if (posicao>=tamanho)
+        if (posicao >= tamanho)
             throw new Exception("O elemento especificado não existe.");
-        if (posicao==0)
+        if (posicao == 0)
             removeInicio();
-        else if (posicao==tamanho-1)
+        else if (posicao == tamanho - 1)
             removeFim();
         else {
             No el = cabeca.proximo;
             // Pegamos o anterior ao que será removido
-            for (int i=1;i<posicao;++i) // comeca em 1 pois o el já está no primeiro elemento (0)
+            for (int i = 1; i < posicao; ++i) // comeca em 1 pois o el já está no primeiro elemento (0)
                 el = el.proximo;
             el.proximo = el.proximo.proximo;
             tamanho--;
         }
     }
 
-    public void booble(){
-        boolean trocou = false;
+    public void bubbleSort() {
+        boolean trocou = true;
 
-        while(trocou != false){
-            No elemento_proximo = cabeca.proximo.proximo;
-            No elemento_atual = cabeca.proximo;
-            No elemento_anterior = cabeca;
-    
-    
-            for(int i = 0; i < tamanho; i++){
-                int idade_atual = elemento_atual.elemento.idade;
-                int idade_proximo = elemento_proximo.elemento.idade;
-    
-                if(idade_atual >= idade_proximo){
-                    No temp = elemento_atual;
-    
-                    elemento_anterior.proximo = elemento_proximo;
-    
-    
+        No elemento_anterior = cabeca;
+        No elemento_atual = cabeca.proximo;
+
+        while (trocou == true) {
+            trocou = false;
+
+            while (elemento_atual.proximo != null && elemento_atual != null)  {
+
+                //System.out.println("Valor da cabeca é " + cabeca.proximo.proximo.elemento.idade);
+
+
+                // Trocando os elementos //
+                if (elemento_atual.elemento.idade > elemento_atual.proximo.elemento.idade) {
+                    No t_elemento_proximo = elemento_atual.proximo;
+
+                    elemento_atual.proximo = t_elemento_proximo.proximo;
+                    t_elemento_proximo.proximo = elemento_atual;
+                    elemento_anterior.proximo = t_elemento_proximo;
+
+                    elemento_anterior = t_elemento_proximo;
+                    trocou = true;
                 }
-            
-            }
-    
+
+                // Sem trocar //
+                else{
+                    elemento_anterior = elemento_atual;
+                    elemento_atual = elemento_atual.proximo;
+                }
                 
+            }
+
         }
-        
     }
 
-
-    public void print(){
+    public void print() {
         No el = cabeca.proximo;
-        while (el!=null){
+        while (el != null) {
             System.out.println("Nome: " + el.elemento.nome);
             System.out.println("Idade: " + el.elemento.idade);
 
             el = el.proximo;
         }
     }
-    public int tamanho(){
+
+    public int tamanho() {
         return tamanho;
     }
 }
