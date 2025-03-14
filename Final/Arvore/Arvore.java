@@ -60,22 +60,20 @@ public class Arvore {
 
     public Node [] insertion(Node [] vet){
         int fim = 1;
-        boolean trocou = true;
 
 
-        for(int j = 0; j < vet.length; j++){
+        for(int j = 0; j < vet.length - 1; j++){
             int menor = vet[0].t.getAno();
 
             for(int i = 0; i < fim; i++){
-                if(vet[i] != null){
-                    if(vet[i].t.getAno() < menor){
-                        Node n1 = vet[i];
-                        Node n2 = vet[i + 1];
-    
-                        vet[i] = n2;
-                        vet[i + 1] = n1;
-                        trocou = true;
-                    }
+                if(vet[i].t.getAno() > vet[i + 1].t.getAno()){
+                    Node n1 = vet[i];
+                    Node n2 = vet[i + 1];
+
+                    vet[i] = n2;
+                    vet[i + 1] = n1;
+
+                    
                 }
                 
             }
