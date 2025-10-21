@@ -28,8 +28,6 @@ public class Pilha {
         for (int i = 0; i < entrada_Usuario.length(); i++) {
             elemento_atual = String.valueOf(entrada_Usuario.charAt(i));
 
-            System.out.println("Elemento atual " + elemento_atual);
-
             // SE FOR . //
             if (elemento_atual.equals(".")) {
                 push(elemento_atual);
@@ -40,6 +38,7 @@ public class Pilha {
             else {
                 if (elemento_guardado.equals("")) {
                     elemento_guardado = elemento_atual;
+                    push(elemento_atual);
                 } 
                 
                 else {
@@ -47,7 +46,7 @@ public class Pilha {
                         qtdDiamante++;
                         pop();
 
-                        if (minhaPilha[0] == null) {
+                        if (topo == -1) {
                             elemento_guardado = "";
                         } 
                         
