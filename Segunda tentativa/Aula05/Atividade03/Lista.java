@@ -40,14 +40,25 @@ public class Lista {
     public void addP(No novo_elemento, int posicao){
         No quebra_galho = cabeca;
 
-        while(posicao > 0){
+        while(posicao > 1){
             quebra_galho = quebra_galho.proximo;
 
             posicao--;
         }
 
         if(quebra_galho.proximo == null){
+            quebra_galho.proximo = novo_elemento;
+        }
+
+        else{
+            No quebra_galhoProx = quebra_galho.proximo;
             
+            quebra_galho.proximo = novo_elemento;
+
+            novo_elemento.proximo = quebra_galhoProx;
+            novo_elemento.anterior = quebra_galho;
+
+            quebra_galhoProx.anterior = novo_elemento;
         }
     }
 }
