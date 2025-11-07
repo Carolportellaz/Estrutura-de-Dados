@@ -15,5 +15,18 @@ public class App {
         fila.enfileira(p4);
         fila.enfileira(p5);
 
+        try{
+            while(fila.cabeca != null){
+                Pessoa p = fila.desenfileira();
+                pilha.push(p);
+            }
+
+            
+        }
+
+        catch(Exception e){
+            System.out.println("Ocorreu o seguinte erro ao tentar desenfileirar " + e.getMessage());
+        }
+
     }
 }
