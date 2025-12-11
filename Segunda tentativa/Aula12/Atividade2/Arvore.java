@@ -1,6 +1,7 @@
 public class Arvore {
     No raiz = null;
     int cot = 0;
+    int vet [] = new int[4];
 
     public void add(No no, int altura){
         if(no == null){
@@ -40,19 +41,12 @@ public class Arvore {
 
     public void menorPorNível(No no){
         if(no == raiz){
-            System.out.println(no);
-            cot++;
-            no = no.esquerda;
-            menorPorNível(no);
+            vet[0] = raiz.altura;
         }
 
         else{
-            if(no.esquerda != null){
-                System.out.println(no);
-                cot++;
-                no = no.esquerda;
-                menorPorNível(no);
-            }
+            
         }
+
     }
 }
